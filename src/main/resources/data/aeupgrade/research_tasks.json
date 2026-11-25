@@ -1,0 +1,565 @@
+{
+  "enabled": false,
+  "tasks": [
+    {
+      "id": "aeupgrade:first_autocraft",
+      "enabled": true,
+      "type": "CRAFT_JOBS",
+      "amount": 1,
+      "points": 1,
+      "title": "@aeupgrade.tree.tasks.example.first_autocraft",
+      "tier": 0,
+      "repeatable": false,
+      "itemRewards": []
+    },
+    {
+      "id": "aeupgrade:logic_order",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:logic_processor",
+      "amount": 8,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.example.logic_order",
+      "tier": 0,
+      "repeatable": false,
+      "itemRewards": []
+    },
+    {
+      "id": "aeupgrade:research_materials",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:certus_quartz_crystal",
+      "amount": 16,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.example.materials",
+      "tier": 0,
+      "repeatable": false,
+      "itemRewards": []
+    },
+    {
+      "id": "aeupgrade:relay_glass",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:quartz_glass",
+      "amount": 12,
+      "points": 1,
+      "title": "@aeupgrade.tree.tasks.contract.relay_glass",
+      "tier": 0,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "minecraft:redstone",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:starter_cables",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:fluix_glass_cable",
+      "amount": 12,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.contract.starter_cables",
+      "tier": 0,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:redstone_stock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "minecraft:redstone",
+      "amount": 48,
+      "points": 1,
+      "title": "@aeupgrade.tree.tasks.contract.redstone_stock",
+      "tier": 0,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "minecraft:gold_ingot",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:fluix_stock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:fluix_crystal",
+      "amount": 16,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.contract.fluix_stock",
+      "tier": 0,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:certus_quartz_crystal",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:calculation_order",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:calculation_processor",
+      "amount": 16,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.calculation_order",
+      "tier": 1,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:engineering_order",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:engineering_processor",
+      "amount": 8,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.engineering_order",
+      "tier": 1,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:fluix_crystal",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:assembly_station",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:molecular_assembler",
+      "amount": 4,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.assembly_station",
+      "tier": 1,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:speed_card",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:component_run",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:cell_component_4k",
+      "amount": 4,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.component_run",
+      "tier": 1,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:provider_lot",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:pattern_provider",
+      "amount": 4,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.provider_lot",
+      "tier": 1,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:advanced_card",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:smart_cable_stock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:fluix_smart_cable",
+      "amount": 32,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.contract.smart_cable_stock",
+      "tier": 1,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:cable_anchor",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:routine_jobs",
+      "enabled": true,
+      "type": "CRAFT_JOBS",
+      "amount": 12,
+      "points": 2,
+      "title": "@aeupgrade.tree.tasks.contract.routine_jobs",
+      "tier": 1,
+      "repeatable": false,
+      "itemRewards": []
+    },
+    {
+      "id": "aeupgrade:interface_stock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:interface",
+      "amount": 4,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.interface_stock",
+      "tier": 1,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:dense_backbone",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:fluix_smart_dense_cable",
+      "amount": 32,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.dense_backbone",
+      "tier": 2,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:fluix_crystal",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:cell_line",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:cell_component_16k",
+      "amount": 4,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.cell_line",
+      "tier": 2,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:calculation_processor",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:parallel_jobs",
+      "enabled": true,
+      "type": "CRAFT_JOBS",
+      "amount": 32,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.parallel_jobs",
+      "tier": 2,
+      "repeatable": false,
+      "itemRewards": []
+    },
+    {
+      "id": "aeupgrade:accelerator_jobs",
+      "enabled": true,
+      "type": "CRAFT_JOBS",
+      "item": "ae2:crafting_accelerator",
+      "amount": 6,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.accelerator_jobs",
+      "tier": 2,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:engineering_processor",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:cell_reserve",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:energy_cell",
+      "amount": 8,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.cell_reserve",
+      "tier": 2,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:charged_certus_quartz_crystal",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:processor_contract",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:calculation_processor",
+      "amount": 32,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.processor_contract",
+      "tier": 2,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "minecraft:diamond",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:storage_fabric",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:storage_bus",
+      "amount": 12,
+      "points": 4,
+      "title": "@aeupgrade.tree.tasks.contract.storage_fabric",
+      "tier": 2,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:fluix_crystal",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:annihilation_stock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:annihilation_core",
+      "amount": 48,
+      "points": 3,
+      "title": "@aeupgrade.tree.tasks.contract.annihilation_stock",
+      "tier": 2,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:formation_core",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:storage_factory",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:cell_component_64k",
+      "amount": 4,
+      "points": 5,
+      "title": "@aeupgrade.tree.tasks.contract.storage_factory",
+      "tier": 3,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:cell_component_16k",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:quantum_commission",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:quantum_link",
+      "amount": 2,
+      "points": 5,
+      "title": "@aeupgrade.tree.tasks.contract.quantum_commission",
+      "tier": 3,
+      "repeatable": false,
+      "itemRewards": [
+        {
+          "item": "ae2:engineering_processor",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:dense_resupply",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:fluix_smart_dense_cable",
+      "amount": 24,
+      "points": 1,
+      "title": "@aeupgrade.tree.tasks.contract.dense_resupply",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:processors_benchmark",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:engineering_processor",
+      "amount": 48,
+      "points": 1,
+      "title": "@aeupgrade.tree.tasks.contract.processors_benchmark",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:calculation_processor",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:drive_refit",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:drive",
+      "amount": 8,
+      "points": 0,
+      "title": "@aeupgrade.tree.tasks.contract.drive_refit",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:item_storage_cell_4k",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:buffer_restock",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:interface",
+      "amount": 16,
+      "points": 0,
+      "title": "@aeupgrade.tree.tasks.contract.buffer_restock",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:pattern_provider",
+          "amount": 2
+        },
+        {
+          "item": "ae2:quartz_glass",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:crafting_core_series",
+      "enabled": true,
+      "type": "CRAFT_ITEMS",
+      "item": "ae2:64k_crafting_storage",
+      "amount": 4,
+      "points": 0,
+      "title": "@aeupgrade.tree.tasks.contract.crafting_core_series",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:crafting_accelerator",
+          "amount": 1
+        },
+        {
+          "item": "ae2:engineering_processor",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:energy_reserve",
+      "enabled": true,
+      "type": "DONATE_ITEMS",
+      "item": "ae2:dense_energy_cell",
+      "amount": 6,
+      "points": 0,
+      "title": "@aeupgrade.tree.tasks.contract.energy_reserve",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:engineering_processor",
+          "amount": 8
+        },
+        {
+          "item": "ae2:fluix_crystal",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "aeupgrade:provider_diagnostics",
+      "enabled": true,
+      "type": "CRAFT_JOBS",
+      "item": "ae2:pattern_provider",
+      "amount": 8,
+      "points": 0,
+      "title": "@aeupgrade.tree.tasks.contract.provider_diagnostics",
+      "tier": 3,
+      "repeatable": true,
+      "itemRewards": [
+        {
+          "item": "ae2:advanced_card",
+          "amount": 4
+        },
+        {
+          "item": "ae2:speed_card",
+          "amount": 4
+        }
+      ]
+    }
+  ],
+  "tiers": [
+    {
+      "id": 0,
+      "minPoints": 0,
+      "visible": 3,
+      "reroll": 1
+    },
+    {
+      "id": 1,
+      "minPoints": 10,
+      "maxPoints": 30,
+      "visible": 5,
+      "reroll": 2
+    },
+    {
+      "id": 2,
+      "minPoints": 30,
+      "maxPoints": 70,
+      "visible": 6,
+      "reroll": 3
+    },
+    {
+      "id": 3,
+      "minPoints": 70,
+      "visible": 6,
+      "reroll": 2
+    }
+  ]
+}

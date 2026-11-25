@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:paper" },
+    { "item": "ae2:logic_processor" },
+    { "item": "ae2:calculation_processor" },
+    { "item": "ae2:engineering_processor" },
+    { "item": "ae2:fluix_pearl" }
+  ],
+  "result": {
+    "id": "aeupgrade:research_certificate",
+    "count": 1
+  }
+}

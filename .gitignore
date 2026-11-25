@@ -1,0 +1,15 @@
+/.gradle
+/.idea
+/build
+/run
+/.stonecutter
+/libs
+/versions/*/build
+/versions/*/run
+/versions/*/logs
+/versions/*/.gradle
+/versions/*/.loom-cache
+/versions/*/.stonecutter
+FEATURES.md
+/unigui_docs
+/docs

@@ -1,0 +1,173 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.148' apply false
+    id 'fabric-loom' version '1.19.1' apply false
+}
+
+def loader = project.name.substring(project.name.lastIndexOf('-') + 1)
+def fabric = loader == 'fabric'
+def minecraftVer = stonecutter.current.version
+apply plugin: fabric ? 'fabric-loom' : 'net.neoforged.moddev'
+
+version = mod_version
+group = mod_group_id
+base.archivesName = "${mod_name}-${loader}-${minecraftVer}"
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+def unigui = "unigui-${loader}-${minecraftVer}"
+repositories {
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            ivy {
+                name = 'UniGuiReleases'
+                url = uri('https://github.com/DeusSixik/UniGUI/releases/download')
+                patternLayout { artifact 'v[revision]/[artifact]-[revision].[ext]' }
+                metadataSources { artifact() }
+            }
+        }
+        filter { includeModule('dev.sixik', unigui) }
+    }
+    exclusiveContent {
+        forRepository { maven { url = 'https://api.modrinth.com/maven' } }
+        filter { includeModule('maven.modrinth', 'jade') }
+    }
+}
+
+sourceSets.main.java.srcDir rootProject.file("src/${loader}/java")
+sourceSets.main.resources.srcDir rootProject.file('src/generated/resources')
+
+def jade = "maven.modrinth:jade:${jade_version}+${loader}"
+def gui = "dev.sixik:${unigui}:${unigui_version}"
+if (fabric) {
+    sourceSets.test.java.srcDir rootProject.file('src/fabric/test/java')
+    def ae2Jar = rootProject.file(providers.gradleProperty('ae2_fabric_jar')
+            .getOrElse("libs/ae2-fabricated-${ae2_fabric_version}.jar"))
+    dependencies {
+        minecraft "com.mojang:minecraft:${minecraftVer}"
+        mappings loom.officialMojangMappings()
+        modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+        modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+        if (ae2Jar.isFile()) {
+            modImplementation files(ae2Jar)
+        }
+        modImplementation gui
+        modCompileOnly jade
+        modLocalRuntime jade
+        include implementation('com.electronwill.night-config:core:3.8.2')
+        include implementation('com.electronwill.night-config:toml:3.8.2')
+        compileOnly 'org.jetbrains:annotations:24.1.0'
+    }
+    loom {
+        runs {
+            client { runDir 'run' }
+            server { runDir 'run/server' }
+            gameTestServer {
+                server()
+                runDir 'run/gametest'
+                vmArg '-Dfabric-api.gametest'
+            }
+        }
+    }
+    tasks.named('compileJava') {
+        doFirst {
+            if (!ae2Jar.isFile()) {
+                throw new GradleException('AE2 Fabricated JAR is missing. See README.md or set -Pae2_fabric_jar=<path>.')
+            }
+        }
+    }
+    if (minecraftVer == '1.21.1' && unigui_version == '1.6.4') {
+        // The Fabric release requests the 1.20.1 refmap name but ships the correct 1.21.1 contents.
+        def refmapSource = configurations.detachedConfiguration(dependencies.create(gui))
+        def alias = tasks.register('prepareUniGuiRefmap', Copy) {
+            from zipTree(refmapSource.singleFile)
+            include 'unigui-common-1.21.1-1.21.1_common-refmap.json'
+            rename { 'unigui-common-1.20.1-1.20.1_common-refmap.json' }
+            into layout.buildDirectory.dir('generated/uniguiRefmap')
+        }
+        sourceSets.main.resources.srcDir alias
+    }
+} else {
+    configurations {
+        localRuntime
+        runtimeClasspath.extendsFrom localRuntime
+    }
+    dependencies {
+        implementation "org.appliedenergistics:appliedenergistics2:${ae2_version}"
+        implementation gui
+        compileOnly jade
+        localRuntime jade
+    }
+    neoForge {
+        version = neo_version
+        parchment {
+            mappingsVersion = parchment_mappings_version
+            minecraftVersion = minecraftVer
+        }
+        runs {
+            client { client() }
+            server {
+                server()
+                programArgument '--nogui'
+            }
+            gameTestServer { type = 'gameTestServer' }
+            data {
+                data()
+                programArguments.addAll '--mod', mod_id, '--all', '--output',
+                        rootProject.file('src/generated/resources').absolutePath, '--existing',
+                        rootProject.file('src/main/resources').absolutePath
+            }
+            configureEach {
+                gameDirectory = rootProject.file('run')
+                systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+                systemProperty 'forge.logging.markers', 'REGISTRIES'
+                logLevel = org.slf4j.event.Level.DEBUG
+            }
+        }
+        mods {
+            "${mod_id}" { sourceSet(sourceSets.main) }
+        }
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+tasks.named('test', Test) { useJUnitPlatform() }
+
+def metadata = [minecraft_version: minecraftVer, neo_version_range: neo_version_range,
+                loader_version_range: loader_version_range, fabric_loader_version: fabric_loader_version,
+                fabric_api_version: fabric_api_version,
+                mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+                mod_authors: mod_authors, mod_description: mod_description, ae2_version: ae2_version,
+                ae2_fabric_version: ae2_fabric_version, unigui_version: unigui_version]
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    inputs.properties metadata
+    from rootProject.file(fabric ? 'src/fabric/modMetadata' : 'src/main/modMetadata')
+    expand metadata
+    into layout.buildDirectory.dir('generated/sources/modMetadata')
+}
+sourceSets.main.resources.srcDir generateModMetadata
+if (!fabric) {
+    neoForge.ideSyncTask generateModMetadata
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = base.archivesName.get()
+            from components.java
+        }
+    }
+    repositories { maven { url = rootProject.file('repo').toURI() } }
+}
+
+idea.module {
+    downloadSources = true
+    downloadJavadoc = true
+}

@@ -1,0 +1,40 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.sixik.aeupgrade.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "GridNodeMixin",
+    "GridNodePowerAccessor",
+    "PathingCalculationMixin",
+    "MolecularAssemblerMixin",
+    "PatternProviderLogicMixin",
+    "PatternSlotsLogicMixin",
+    "PatternSlotsMenuMixin",
+    "PatternTerminalMenuMixin",
+    "PatternTerminalTrackerAccessor",
+    "CraftingCpuLogicMixin",
+    "ResearchCraftingStorageMixin",
+    "DeviceLimitPathingMixin",
+    "InterfaceLogicMixin",
+    "InterfaceSlotHostMixin",
+    "InterfaceSlotMenuMixin",
+    "InterfaceStockAmountMixin",
+    "ControllerUpgradeMenuMixin",
+    "ControllerResearchDropsMixin"
+  ],
+  "client": [
+    "PatternSlotLayoutMixin",
+    "PatternSlotsScreenMixin",
+    "PatternTerminalRecordMixin",
+    "InterfaceSlotPositionAccessor",
+    "InterfaceSlotScreenMixin",
+    "ControllerUpgradeScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

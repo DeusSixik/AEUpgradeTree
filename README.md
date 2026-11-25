@@ -1,7 +1,14 @@
-# AEUpgradeTree
+<p align="center">
+  <img src="./.idea/icon.png" alt="AEUpgradeTree Logo" width="144">
+</p>
 
-An Applied Energistics 2 addon featuring a research tree. Each ME network with a controller has its own progress and
-upgrades.
+<h1 align="center">AEUpgradeTree</h1>
+
+<p align="center">
+  An Applied Energistics 2 addon featuring a research tree. Each ME network with a controller has its own progress and
+upgrades.<br>
+</p>
+
 
 ## Features
 
